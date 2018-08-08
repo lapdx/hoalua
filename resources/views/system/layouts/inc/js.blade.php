@@ -1,0 +1,14 @@
+<script type="text/javascript" src="{{asset('vendors/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/AdminLTE/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/bootstrap-toggle/js/bootstrap-toggle.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/AdminLTE/dist/js/app.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('vendors/slimScroll/jquery.slimscroll.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/pnotify.custom.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/angular.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/ng-file-upload.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/ng-file-upload-shim.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/angular-sanitize.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/angular-animate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/controller/system.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/controller/base-controller.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/controller/header-controller.js')}}"></script>
