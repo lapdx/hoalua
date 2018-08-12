@@ -17,4 +17,6 @@ Route::group(['prefix' => 'system', 'namespace' => 'System', 'middleware' => 'cu
     Route::get('/setting', ['as' => 'controller::setting::index', 'uses' => 'SettingController@index']);
     Route::get('/manufacturer', ['as' => 'controller::manufacturer::index', 'uses' => 'ManufacturerController@index']);
     Route::get('/category', ['as' => 'controller::category::index', 'uses' => 'CategoryController@index']);
+    Route::get('/blog', ['as' => 'controller::blog::index', 'uses' => 'BlogController@index']);
+    Route::get('/email', ['as' => 'controller::email::index', 'uses' => 'EmailController@index']);
 });

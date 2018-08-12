@@ -83,11 +83,11 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
 //			cache: true
 //		}
 //    });
-                $http.get($scope.apiUrl + "/category" + buildFilter(true)).success(function (data) {
+                $http.get($scope.apiUrl + "/category" + buildFilter(1)).success(function (data) {
             if (data.status == "successful") {
                 $scope.parents = data.result;
-                $scope.filter.page_id = data.meta.page_id;
-                $scope.pagesCount = data.page_count;
+//                $scope.filter.page_id = data.meta.page_id;
+//                $scope.pagesCount = data.page_count;
             }
         }).error(function () {
         });
@@ -98,6 +98,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
     };
     $scope.openDialog = function (mode, category) {
         $scope.mode = mode;
+        tinyMCE.remove();
         $scope.reset(true);
         if (mode === 'update' || mode === 'detail') {
             $scope.formTitle = 'Sửa danh mục';
@@ -105,6 +106,9 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
             $scope.category.status = $scope.getByField($scope.statuses, "value", $scope.category.status);
             $scope.category.parent_id = $scope.getByField($scope.parents, "id", $scope.category.parent_id);
         }
+        $timeout(function () {
+            $scope.baseController.initTinymce("#description", 200, 0);
+        });
     };
 
 
@@ -114,7 +118,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
             $scope.filter = {};
         }
         $scope.isFinding = false;
-        $scope.manufacture = {
+        $scope.category = {
              id: 0,
         parent_id: 0,
         left_value: 0,
@@ -147,7 +151,14 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
             return;
         }
         $scope.category.status = $scope.category.status.value;
-        $scope.category.parent_id = $scope.category.parent_id.id;
+        if ($scope.category.parent_id) {
+            $scope.category.parent_id = $scope.category.parent_id.id;
+        }
+        if ($scope.category.type) {
+            $scope.category.type = $scope.category.type.value;
+        }
+        var description = tinyMCE.get('description').getContent();
+        $scope.category.description = description;
         if ($scope.mode == "update") {
                 $http.patch($scope.apiUrl + '/category/' + $scope.category.id, $scope.category).success(function (data) {
                     if (data.status == "fail") {
@@ -179,15 +190,28 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
     $scope.delete = function (item) {
         var yes = confirm("Bạn có thực sự muốn xóa \"" + item.title + "\"?");
         if (yes) {
-            $http.delete($scope.apiUrl + "/category/" + item.id).success(function (data) {
-                if (data.status === "successful") {
-                    $scope.reset();
-                    $scope.find(true);
-                } else {
-                    alert(data.message);
-                    return;
+            $http.get($scope.apiUrl + "/category?filters=parent_id=" + item.id).success(function (data) {
+                if (data.status == "successful") {
+                    if (data.meta.total_count > 0) {
+                        showMessage('Error', "Danh mục tồn tại danh mục con ", 'error', 'glyphicon-remove');
+                        return
+                    }
+                    $http.delete($scope.apiUrl + "/category/" + item.id).success(function (data) {
+                        if (data.status === "successful") {
+                            $scope.reset();
+                            $scope.find(true);
+                        } else {
+                            alert(data.message);
+                            return;
+                        }
+                    });
+                    $scope.parents = data.result;
+//                $scope.filter.page_id = data.meta.page_id;
+//                $scope.pagesCount = data.page_count;
                 }
+            }).error(function () {
             });
+
         }
     };
 
@@ -230,11 +254,11 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         if ($scope.filter.type) {
             filter += 'type=' + $scope.filter.type.value + ',';
         }
+        if (isParent) {
+            filter += 'parent_id=0,';
+        }
         if (filter != '') {
             retVal += '&filters=' + filter;
-        }
-        if (isParent) {
-            retVal += '&parent_id=0';
         }
         return retVal;
     }

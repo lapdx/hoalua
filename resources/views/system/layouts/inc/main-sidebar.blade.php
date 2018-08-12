@@ -20,6 +20,16 @@
                 <i class="fa fa-industry" aria-hidden="true"></i> <span>Hãng sản xuất</span>
             </a>
         </li>
+         <li class="<?= ($currentURL == 'controller::blog::index') ? 'active' : '' ?>">
+            <a href="{{route('controller::blog::index')}}">
+                <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Bài viết</span>
+            </a>
+        </li>
+         <li class="<?= ($currentURL == 'controller::email::index') ? 'active' : '' ?>">
+            <a href="{{route('controller::email::index')}}">
+                <i class="fa fa-envelope" aria-hidden="true"></i> <span>Email đăng ký</span>
+            </a>
+        </li>
          <li class="treeview">
           <a href="#">
             <i class="fa fa-share"></i> <span>Cài đặt</span>

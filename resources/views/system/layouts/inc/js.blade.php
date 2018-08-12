@@ -5,6 +5,7 @@
 <script type="text/javascript" src="{{asset('vendors/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/pnotify.custom.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/angular.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/tinymce/tinymce.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/ng-file-upload.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/ng-file-upload-shim.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/angular-sanitize.min.js')}}"></script>

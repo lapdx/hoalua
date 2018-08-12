@@ -347,7 +347,42 @@ function BaseController($scope, $http, $rootScope) {
 //        result += ", " + (seconds < 10 ? "0" + seconds + " giây" : seconds + " giây");
         return result;
     };
-
+$scope.sendRequest = function(method,url,data,successFn,errorFn){
+        switch (method) {
+            case "POST":
+                $http.post($scope.apiUrl + url, data).success(function (data) {
+                    successFn(data);
+                }).error(function (e) {
+                    errorFn(e);
+                });
+                break;
+            case "PUT":
+                $http.put($scope.apiUrl + url, data).success(function (data) {
+                    successFn(data);
+                }).error(function (e) {
+                    errorFn(e);
+                });
+                break;
+            case "PATCH":
+                $http.patch($scope.apiUrl + url, data).success(function (data) {
+                    successFn(data);
+                }).error(function (e) {
+                    errorFn(e);
+                });
+                break;
+            case "DELETE":
+                $http.delete($scope.apiUrl + url).success(function (data) {
+                    successFn(data);
+                }).error(function (e) {
+                    errorFn(e);
+                });
+                break;
+                
+            default:
+                
+                break;
+        }
+}
     this.roundingInt = function (integerValue, zerosCount) {
         var retVal = integerValue;
         var stdZerosCount = zerosCount != null ? zerosCount : 3;
@@ -473,7 +508,7 @@ function BaseController($scope, $http, $rootScope) {
             plugins: [
                 "advlist autolink lists link image charmap print preview anchor",
                 "searchreplace visualblocks code fullscreen imageupload",
-                "insertdatetime media table contextmenu paste textcolor productLink"
+                "insertdatetime media table contextmenu paste textcolor"
             ],
             toolbar: "fontselect | fontsizeselect | styleselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | imageupload | templateInsert | productLink",
             fontsize_formats: "8pt 9pt 10pt 11pt 12pt 13pt 14pt 15pt 16pt 17pt 18pt 20pt 24pt 36pt",
@@ -483,76 +518,17 @@ function BaseController($scope, $http, $rootScope) {
             height: height,
             readonly: readonly,
             setup: function (editor) {
-                editor.addButton('templateInsert', {
-                    type: 'menubutton',
-                    text: 'Insert Template',
-                    icon: false,
-                    menu: buildMenu(editor)
-                });
+//                editor.addButton('templateInsert', {
+//                    type: 'menubutton',
+//                    text: 'Insert Template',
+//                    icon: false,
+//                    menu: buildMenu(editor)
+//                });
                 editor.on('init', callBackFn);
             },
         });
     };
-    function buildMenu(editor) {
-        var menus = [{
-                text: 'Thêm giá',
-                onclick: function () {
-                    editor.insertContent('[[Price]]');
-                }
-            },
-            {
-                text: 'Thêm số điện thoại',
-                onclick: function () {
-                    editor.insertContent('[[Phone]]');
-                }
-            },
-            {
-                text: 'Thêm hãng sản xuất',
-                onclick: function () {
-                    editor.insertContent('[[Manufacturer]]');
-                }
-            },
-            {
-                text: 'Thêm xuất xứ',
-                onclick: function () {
-                    editor.insertContent('[[Product_origin]]');
-                }
-            },
-            {
-                text: 'Thêm hạn sử dụng',
-                onclick: function () {
-                    editor.insertContent('[[Expried_date]]');
-                }
-            },
-            {
-                text: 'Thêm chú ý cho TPCN',
-                onclick: function () {
-                    editor.insertContent('[[TPCN]]');
-                }
-            },
-            {
-                text: 'Thêm chú ý cho Mom & Baby',
-                onclick: function () {
-                    editor.insertContent('[[MB]]');
-                }
-            }
-        ];
-        if (typeof address != 'undefined' && address != null && address != '') {
-            arrayAddress = JSON.parse(address);
-            arrayAddress.forEach(function (item) {
-                var menu = {
-                    text: 'Thêm địa chỉ ' + item.key,
-                    onclick: function () {
-                        editor.insertContent('[[' + item.key + ']]');
-                    }
-                }
-                if (item.key != 'TPCN' && item.key != 'MB') {
-                    menus.push(menu);
-                }
-            });
-        }
-        return menus;
-    }
+    
     /**
      * show image when choose file image
      * @param {type} imputFile
@@ -649,7 +625,22 @@ function BaseController($scope, $http, $rootScope) {
     }
 
 }
+function showErrors(e) {
+    var messages = "";
+    if (typeof e === "object") {
+        for (var prop in e) {
+            // skip loop if the property is from prototype
+            if (!e.hasOwnProperty(prop))
+                continue;
 
+            // your code
+            messages += e[prop][0];
+        }
+    }
+    showMessage('Error', messages, 'error', 'glyphicon-remove');
+    $('.save').button('reset');
+
+}
 function showMessage(title, text, type, icon) {
     var notice = new PNotify({
         title: title,
