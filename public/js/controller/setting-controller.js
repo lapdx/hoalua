@@ -74,7 +74,7 @@ function SettingController($scope, $rootScope, $http, $window) {
             if (data.status == 'fail') {
                 alert("Lỗi! Key có thể đã được tạo trước đó!");
             } else {
-                $scope.newParam.id = data.id;
+                $scope.newParam.id = data.result.id;
                 $scope.params.unshift($scope.newParam);
                 $scope.newParam = {};
             }

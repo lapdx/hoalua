@@ -48,46 +48,9 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
     $scope.baseController = this.__proto__ = new BaseController($scope, $http, $rootScope);
 
     this.initialize = function ( ) {
-//        $("#parentId, #parentFilterId").select2({
-//        allowClear: true,
-//        placeholder: "-- Chọn Danh Mục --",
-//        tags: true,
-//		ajax: {
-//			url: $scope.apiUrl + "/category" + buildFilter(true),
-//			dataType: 'json',
-//			delay: 250,
-//			sorter: false,
-//			data: function (params) {
-//				return {
-//                    name: params.term
-//				};
-//            },
-//            beforeSend: function (xhr) {
-//                xhr.setRequestHeader ("Authorization", "Basic YXBpOnRyYW5kdW9uZ0AyMzc=");
-////                var params = new URL(window.location.origin + settings.url);
-////                var check = params.searchParams.get("name");
-////                if(typeof(check) == 'undefined' || check == '' || check == null) {
-////                    return false;
-////                }
-//            },
-//			processResults: function (data, params) {
-//				return {
-//					results: $.map(data.data, function (item) {
-//						return {
-//							text: item.title,
-//							id: item.id
-//						}
-//					})
-//				};
-//			},
-//			cache: true
-//		}
-//    });
-                $http.get($scope.apiUrl + "/category" + buildFilter(1)).success(function (data) {
+        $http.get($scope.apiUrl + "/category" + buildFilter(1)).success(function (data) {
             if (data.status == "successful") {
                 $scope.parents = data.result;
-//                $scope.filter.page_id = data.meta.page_id;
-//                $scope.pagesCount = data.page_count;
             }
         }).error(function () {
         });
@@ -119,19 +82,19 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         }
         $scope.isFinding = false;
         $scope.category = {
-             id: 0,
-        parent_id: 0,
-        left_value: 0,
-        right_value: 0,
-        title: '',
-        slug: '',
-        type: {name: "Category", value: "category"},
-        description: '',
-        meta_title: '',
-        meta_description: '',
-        meta_keywords: '',
-        sorder: 0,
-        status: {name: "Hiện", value: "active"}
+            id: 0,
+            parent_id: 0,
+            left_value: 0,
+            right_value: 0,
+            title: '',
+            slug: '',
+            type: {name: "Category", value: "category"},
+            description: '',
+            meta_title: '',
+            meta_description: '',
+            meta_keywords: '',
+            sorder: 0,
+            status: {name: "Hiện", value: "active"}
         };
         $scope.find();
 
@@ -159,32 +122,89 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         }
         var description = tinyMCE.get('description').getContent();
         $scope.category.description = description;
-        if ($scope.mode == "update") {
-                $http.patch($scope.apiUrl + '/category/' + $scope.category.id, $scope.category).success(function (data) {
-                    if (data.status == "fail") {
-                        showMessage('Error', "Cập nhật thất bại " + data.message, 'error', 'glyphicon-remove');
-                        $('.save').button('reset');
-                    } else {
-                        $('.save').button('reset');
-                        $scope.reset(true);
-                        $scope.find();
-                    }
-                    $('#createManufacturer').modal('hide');
-
-                });
-            } else {
-                $http.post($scope.apiUrl + '/category', $scope.category).success(function (data) {
-                    if (data.status == "fail") {
-                        showMessage('Error', "Thêm mới thất bại " + data.message, 'error', 'glyphicon-remove');
-                        $('.save').button('reset');
-                    } else {
-                        $('.save').button('reset');
-                        $scope.reset(true);
-                        $scope.find();
-                    }
-                    $('#createManufacturer').modal('hide');
-                });
+                if ($scope.category.image != null && typeof $scope.category.image == 'object') {
+            Upload.upload({
+                url: $scope.apiUrl + "/upload",
+                data:{file: $scope.category.image,
+                customDirectoryPath:'category'}
+            }).error(function (data, status, headers, config) {
+                console.log('error status: ' + status);
+                console.log('error' + data);
+            }).success(function (data) {
+                if (data.status == 'successful') {
+                    var relativePath = data.result;
+                    $scope.category.image = relativePath;
+//                    $scope.blog.image = relativePath.replace(/^.*[\\\/]/, '');
+                            var url = '/category';
+            var method = "POST";
+            if ($scope.mode == "update"){
+                url += "/"+$scope.category.id;
+                method = 'PATCH';
             }
+            $scope.sendRequest(method, url, $scope.category, function (data) {
+                if (data.status == "fail") {
+                    showMessage('Error', "Cập nhật thất bại " + data.message, 'error', 'glyphicon-remove');
+                    $('.save').button('reset');
+                } else {
+                    $('.save').button('reset');
+                    $scope.reset(true);
+                    $scope.find();
+                }
+                $('#createManufacturer').modal('hide');
+            },function(e){
+                $scope.category.status = $scope.getByField($scope.statuses,'value',$scope.category.status );
+                showErrors(e);
+            });
+                }
+            });
+        } else {
+            var url = '/blog';
+            var method = "POST";
+            if ($scope.mode == "update"){
+                url += "/"+$scope.category.id;
+                method = 'PATCH';
+            }
+            $scope.sendRequest(method, url, $scope.category, function (data) {
+                if (data.status == "fail") {
+                    showMessage('Error', "Cập nhật thất bại " + data.message, 'error', 'glyphicon-remove');
+                    $('.save').button('reset');
+                } else {
+                    $('.save').button('reset');
+                    $scope.reset(true);
+                    $scope.find();
+                }
+                $('#createManufacturer').modal('hide');
+            },function(e){
+                $scope.category.status = $scope.getByField($scope.statuses,'value',$scope.category.status );
+                showErrors(e);
+            });
+        }
+//        if ($scope.mode == "update") {
+//            $http.patch($scope.apiUrl + '/category/' + $scope.category.id, $scope.category).success(function (data) {
+//                if (data.status == "fail") {
+//                    showMessage('Error', "Cập nhật thất bại " + data.message, 'error', 'glyphicon-remove');
+//                    $('.save').button('reset');
+//                } else {
+//                    $('.save').button('reset');
+//                    $scope.reset(true);
+//                    $scope.find();
+//                }
+//                $('#createManufacturer').modal('hide');
+//
+//            });
+//        } else {
+//            $http.post($scope.apiUrl + '/category', $scope.category).success(function (data) {
+//                if (data.status == "fail") {
+//                    showMessage('Error', "Thêm mới thất bại " + data.message, 'error', 'glyphicon-remove');
+//                    $('.save').button('reset');
+//                } else {
+//                    $('.save').button('reset');
+//                    $scope.reset(true);
+//                    $scope.find();
+//                }
+//                $('#createManufacturer').modal('hide');
+//            });
+//        }
     };
 
     $scope.delete = function (item) {
@@ -239,7 +259,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
     };
     function buildFilter(isParent) {
         var retVal = '?';
-        var dataFilter = {page_id: $scope.filter.pageId, page_size: isParent?10000:20, sort: '-sorder'};
+        var dataFilter = {page_id: $scope.filter.pageId, page_size: isParent ? 10000 : 20, sort: '-sorder'};
         retVal += $scope.baseController.encodeQueryData(dataFilter);
         var filter = '';
         if ($scope.filter.title) {
@@ -273,6 +293,18 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         if (event.keyCode === 13) {
             $scope.find(true);
         }
+    };
+        $scope.showImageWhenChooseFile = function (selectorShowImage) {
+        if ($scope.category.image != null) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $(selectorShowImage).attr('src', e.target.result);
+            };
+            reader.readAsDataURL($scope.category.image);
+            $(selectorShowImage).show();
+            $(selectorShowImage).removeClass('ng-hide');
+        }
+
     };
 }
     

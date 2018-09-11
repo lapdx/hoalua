@@ -10,6 +10,7 @@
 <script type="text/javascript" src="{{asset('js/angular/ng-file-upload-shim.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/angular-sanitize.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/angular/angular-animate.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/angular/dynamic-number.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/controller/system.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/controller/base-controller.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/controller/header-controller.js')}}"></script>

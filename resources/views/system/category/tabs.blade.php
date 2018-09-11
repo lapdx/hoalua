@@ -1,9 +1,9 @@
 <!-- Custom Tabs -->
 <div class="nav-tabs-custom" style="box-shadow: none">
-<!--    <ul class="nav nav-tabs">
-      <li class="active"><a href="#basic-tab" data-toggle="tab">Basic Information</a></li>
-      <li><a href="#advanced-tab" data-toggle="tab">Advanced Information</a></li>
-    </ul>-->
+    <!--    <ul class="nav nav-tabs">
+          <li class="active"><a href="#basic-tab" data-toggle="tab">Basic Information</a></li>
+          <li><a href="#advanced-tab" data-toggle="tab">Advanced Information</a></li>
+        </ul>-->
     <div class="tab-content">
         <div class="tab-pane active" id="basic-tab">
             <div class="row">
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-md-3 control-label">Meta Title<br />
@@ -77,6 +77,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Image</label>
+                        <div class="col-md-4">
+                            <img id="image_demo" ng-show="category.image != null" ng-src="@{{uploadPath + category.image}}" style="max-width: 60px; max-height: 60px; display: block; margin: 1px;">
+                            <input type="file" ng-change="showImageWhenChooseFile('#image_demo')" ng-model="category.image"  ngf-select tabindex="10" accept="image/*" ngf-max-size="3MB" value="Select photo"/>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="form-group">
                         <label class="col-md-1 control-label">Mô tả<br />
@@ -86,15 +95,15 @@
                         </div>
                     </div>
                 </div>
-<!--                 <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-md-3 control-label">Loại</label>
-                        <div class="col-md-9">
-                            <select class="form-control" ng-model="category.type" tabindex="10" ng-options="item.name for item in types track by item.value"></select>
-                        </div>
-                    </div>
-                </div>-->
+                <!--                 <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label">Loại</label>
+                                        <div class="col-md-9">
+                                            <select class="form-control" ng-model="category.type" tabindex="10" ng-options="item.name for item in types track by item.value"></select>
+                                        </div>
+                                    </div>
+                                </div>-->
             </div>
         </div><!-- /.tab-pane -->
     </div><!-- /.tab-content -->
-  </div><!-- nav-tabs-custom -->
+</div><!-- nav-tabs-custom -->

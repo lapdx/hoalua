@@ -45,7 +45,7 @@
                                         <button type="button" class="btn btn-sm btn-danger" ng-show="item['edit']" ng-click="cancelUpdate(item)" title="Hủy"><i class="fa fa-close"></i></button>
                                     </td>
                                 </tr>
-                                <tr ng-show="keywords.length == 0">
+                                <tr ng-show="params.length == 0">
                                     <td colspan="4">No data...</td>
                                 </tr>
                             </tbody>

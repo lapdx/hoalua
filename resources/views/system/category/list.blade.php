@@ -17,15 +17,18 @@
                         <table class="table table-bordered table-hover" ng-cloak>
                             <thead>
                                 <tr role="row">
+                                    <th class="col-md-2 text-center vertical-align">Ảnh</th>
                                     <th class="col-md-2 text-center vertical-align">Tên</th>
                                     <th class="col-md-2 text-center vertical-align">Trạng thái</th>
-                                    <!--<th class="col-md-2 text-center vertical-align">Loại</th>-->
                                     <th class="col-md-2 text-center vertical-align">Vị trí</th>
                                     <th class="col-md-2 text-center vertical-align">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="item in categories track by $index">
+                                    <td>
+                                        <span ng-show="item.image != null"><img src="@{{uploadPath + item.image}}" style="max-width: 50px;max-height: 50px"/></span>
+                                    </td>
                                     <td>
                                         <span>@{{item.title}}</span>
                                     </td>

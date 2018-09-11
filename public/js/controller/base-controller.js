@@ -634,7 +634,7 @@ function showErrors(e) {
                 continue;
 
             // your code
-            messages += e[prop][0];
+            messages += e[prop][0] + "</br>";
         }
     }
     showMessage('Error', messages, 'error', 'glyphicon-remove');

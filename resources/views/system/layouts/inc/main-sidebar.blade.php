@@ -30,6 +30,21 @@
                 <i class="fa fa-envelope" aria-hidden="true"></i> <span>Email đăng ký</span>
             </a>
         </li>
+         <li class="<?= ($currentURL == 'controller::attribute::index') ? 'active' : '' ?>">
+            <a href="{{route('controller::attribute::index')}}">
+                <i class="fa fa-filter" aria-hidden="true"></i> <span>Bộ lọc</span>
+            </a>
+        </li>
+         <li class="<?= ($currentURL == 'controller::attributeValue::index') ? 'active' : '' ?>">
+            <a href="{{route('controller::attributeValue::index')}}">
+                <i class="fa fa-outdent" aria-hidden="true"></i> <span>Thuộc tính bộ lọc</span>
+            </a>
+        </li>
+         <li class="<?= ($currentURL == 'controller::inoutput::index') ? 'active' : '' ?>">
+            <a href="{{route('controller::inoutput::index')}}">
+                <i class="fa fa-file-text-o" aria-hidden="true"></i> <span>Đơn hàng</span>
+            </a>
+        </li>
          <li class="treeview">
           <a href="#">
             <i class="fa fa-share"></i> <span>Cài đặt</span>
