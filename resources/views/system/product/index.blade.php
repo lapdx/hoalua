@@ -25,5 +25,7 @@
             @include('system.product.list')
         </section>
         @include('system.product.form')
+        @include('system.product.form-attributes')
+        @include('system.product.gallery')
     </div>
 @stop

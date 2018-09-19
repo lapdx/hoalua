@@ -25,5 +25,6 @@
             @include('system.category.list')
         </section>
         @include('system.category.form')
+        @include('system.category.form-attributes')
     </div>
 @stop

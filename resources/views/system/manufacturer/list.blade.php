@@ -19,7 +19,6 @@
                                 <tr role="row">
                                     <th class="col-md-2 text-center vertical-align">Ảnh</th>
                                     <th class="col-md-2 text-center vertical-align">Tên</th>
-                                    <th class="col-md-2 text-center vertical-align">Mô tả</th>
                                     <th class="col-md-2 text-center vertical-align">Trạng thái</th>
                                     <th class="col-md-2 text-center vertical-align">Vị trí</th>
                                     <th class="col-md-2 text-center vertical-align">Chức năng</th>
@@ -32,9 +31,6 @@
                                     </td>
                                     <td>
                                         <span>@{{item.title}}</span>
-                                    </td>
-                                    <td class="text-center vertical-align">
-                                        <span>@{{item.description}}</span>
                                     </td>
                                     <td class="text-center vertical-align">
                                        <span class="label label-primary cursor">@{{getByField(statuses,'value',item.status).name}}</span>

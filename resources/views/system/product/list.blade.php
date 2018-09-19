@@ -17,7 +17,7 @@
                         <table class="table table-bordered table-hover" ng-cloak>
                             <thead>
                                 <tr role="row">
-                                    <th class="col-md-1 text-center vertical-align">ID</th>
+                                    <th class=" text-center vertical-align">ID</th>
                                     <th class="col-md-1 text-center vertical-align">Ảnh</th>
                                     <th class="col-md-2 text-center vertical-align">Tên</th>
                                     <th class="col-md-2 text-center vertical-align">Giá hãng</th>
@@ -51,6 +51,8 @@
                                         <span>@{{item.sorder}}</span>
                                     </td>
                                     <td class="text-center vertical-align">
+                                        <button type="button" class="btn btn-sm btn-primary" title="Ảnh" data-toggle="modal" data-target="#galleryForm" ng-click="openGallery(item)"><i class="fa fa-image"></i></button>
+                                        <button type="button" class="btn btn-sm btn-warning" title="Cấu hình lọc" data-toggle="modal" data-target="#filterForm" ng-click="openFilterFrom(item)"><i class="fa fa-filter"></i></button>
                                         <button type="button" class="btn btn-sm btn-info" title="Sửa" data-toggle="modal" data-target="#createManufacturer" ng-click="openDialogCreateOrUpdate('update',item)"><i class="fa fa-pencil"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" ng-click="delete(item)" title="Xóa"><i class="fa fa-trash"></i></button>
                                     </td>

@@ -63,21 +63,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1">
-            <div class="checkbox">
-                  <label>
-                    <input ng-model="filter.is_new" type="checkbox"> Mới
-                  </label>
-                </div>
-        </div>
-        <div class="col-md-1">
-            <div class="checkbox">
-                  <label>
-                    <input ng-model="filter.is_hot" type="checkbox"> Hot
-                  </label>
-                </div>
-        </div>
-        <div class="col-md-3 text-center">
+        <div class="col-md-2 text-center">
             <div class="form-group">
                 <button type="button" class="btn btn-warning search" ng-click="find();" data-loading-text="<span class='fa fa-spinner fa-spin'></span> Loading..."><i class="fa fa-search"></i> Search</button>
                 <button type="button" class="btn btn-danger" ng-click="reset();"><i class="fa fa-times"></i> Clear</button>

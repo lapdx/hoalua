@@ -124,9 +124,14 @@ function AttributeValueController($scope, $rootScope, $http, $window, $timeout, 
      */
     $scope.save = function () {
         $('.save').button('loading');
-        if ($scope.attributeValue.name === '') {
+        if (!$scope.attributeValue.content_value) {
             $('.save').button('reset');
             showMessage('Error', "Tên không được bỏ trống", 'error', 'glyphicon-remove');
+            return;
+        }
+        if (!$scope.attributeValue.attribute_id) {
+            $('.save').button('reset');
+            showMessage('Error', "Chọn bộ lọc", 'error', 'glyphicon-remove');
             return;
         }
         if ($scope.attributeValue.attribute_id) {

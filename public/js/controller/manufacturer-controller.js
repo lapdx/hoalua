@@ -51,6 +51,8 @@ function ManufacturerController($scope, $rootScope, $http, $window, $timeout, Up
     };
     $scope.openDialog = function (mode, manufacture) {
         $scope.mode = mode;
+        $scope.formTitle = 'Tạo mới hãng sản xuất';
+        $scope.reset(true);
         if (mode === 'update' || mode === 'detail') {
             $scope.formTitle = 'Sửa hãng sản xuất';
             $scope.reset(true);
@@ -211,7 +213,7 @@ function ManufacturerController($scope, $rootScope, $http, $window, $timeout, Up
     };
     function buildFilter() {
         var retVal = '?';
-        var dataFilter = {page_id: $scope.filter.pageId, page_size: 20, sort: '-sorder'};
+        var dataFilter = {page_id: $scope.filter.pageId, page_size: 20, sorts: '-sorder'};
         retVal += $scope.baseController.encodeQueryData(dataFilter);
         var filter = '';
         if ($scope.filter.title) {

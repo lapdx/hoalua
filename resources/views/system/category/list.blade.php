@@ -42,6 +42,7 @@
                                         <span>@{{item.sorder}}</span>
                                     </td>
                                     <td class="text-center vertical-align">
+                                        <button type="button" class="btn btn-sm btn-warning" title="Bộ lọc" data-toggle="modal" data-target="#filterForm" ng-click="openFilterFrom(item)"><i class="fa fa-filter"></i></button>
                                         <button type="button" class="btn btn-sm btn-info" title="Sửa" data-toggle="modal" data-target="#createManufacturer" ng-click="openDialogCreateOrUpdate('update',item)"><i class="fa fa-pencil"></i></button>
                                         <button type="button" class="btn btn-danger btn-sm" ng-click="delete(item)" title="Xóa"><i class="fa fa-trash"></i></button>
                                     </td>
