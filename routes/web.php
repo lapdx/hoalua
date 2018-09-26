@@ -28,4 +28,7 @@ Route::group(['prefix' => 'system', 'namespace' => 'System', 'middleware' => 'cu
 });
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/', ['as' => 'frontend::home', 'uses' => 'HomeController@index']);
+    Route::get('/tin-tuc/{slug}', ['as' => 'frontend::news', 'uses' => 'NewsController@detail']);
+//    Route::get('/danh-muc/{slug}', ['as' => 'frontend::news', 'uses' => 'CategoryController@detail']);
+//    Route::get('/{slug}', ['as' => 'frontend::product', 'uses' => 'ProductController@detail']);
 });

@@ -21,7 +21,7 @@ class Controller extends BaseController {
             if (isset($retVal[$item->parent_id])) {
                 $retVal[$item->parent_id][] = $item;
             } else {
-                $retVal[$item->parent_id] = [];
+                $retVal[$item->parent_id] = [$item];
             }
         }
         return $retVal;

@@ -51,6 +51,7 @@ function BlogController($scope, $rootScope, $http, $window, $timeout, Upload) {
         $scope.mode = mode;
         tinyMCE.remove();
         $scope.reset(true);
+        $('#description').val('');
         if (mode === 'update' || mode === 'detail') {
             $scope.formTitle = 'Sửa bài viết';
             $scope.blog = angular.copy(blog);

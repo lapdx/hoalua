@@ -17,6 +17,7 @@
                         <table class="table table-bordered table-hover" ng-cloak>
                             <thead>
                                 <tr role="row">
+                                    <th class="col-md-2 text-center vertical-align">ID</th>
                                     <th class="col-md-2 text-center vertical-align">Ảnh</th>
                                     <th class="col-md-2 text-center vertical-align">Tên</th>
                                     <th class="col-md-2 text-center vertical-align">Trạng thái</th>
@@ -27,6 +28,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="item in blogs track by $index">
+                                    <td>
+                                        <span>@{{item.id}}</span>
+                                    </td>
                                     <td>
                                         <span ng-show="item.image != null"><img src="@{{uploadPath + item.image}}" style="max-width: 50px;max-height: 50px"/></span>
                                     </td>

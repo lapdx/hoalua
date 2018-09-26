@@ -70,6 +70,7 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
         $scope.mode = mode;
         tinyMCE.remove();
         $scope.reset(true);
+        $('#description').val('');
         if (mode === 'update' || mode === 'detail') {
             $scope.formTitle = 'Sửa bài viết';
             $scope.product = angular.copy(product);
@@ -144,7 +145,6 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
                         }
                         $('#createManufacturer').modal('hide');
                     }, function (e) {
-                        $scope.product.status = $scope.getByField($scope.statuses, 'value', $scope.product.status);
                         showErrors(e);
                     });
                 }
@@ -167,7 +167,6 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
                 }
                 $('#createManufacturer').modal('hide');
             }, function (e) {
-                $scope.product.status = $scope.getByField($scope.statuses, 'value', $scope.product.status);
                 showErrors(e);
             });
         }
@@ -362,14 +361,6 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
         if ($scope.product.category != null) {
             retVal.category_id = $scope.product.category.id;
             retVal.category_name = $scope.product.category.title;
-        }
-        retVal.is_hot = false;
-        if (typeof $scope.product.is_hot != 'undefined' && $scope.product.is_hot) {
-            retVal.is_hot = $scope.product.is_hot;
-        }
-        retVal.is_new = false;
-        if (typeof $scope.product.is_new != 'undefined' && $scope.product.is_new) {
-            retVal.is_new = $scope.product.is_new;
         }
         if (typeof $scope.product.content != 'undefined') {
             retVal.content = content;
