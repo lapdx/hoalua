@@ -18,6 +18,7 @@
     </head>
     <body>
         <div class="container">
+            {{ csrf_field() }}
         @include('frontend.layout.header')
         <div class="bground">
         @yield('content')
@@ -52,5 +53,15 @@
         <script src="/frontend/js/owl.carousel.min.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
         <script src="/frontend/js/cloudzoom.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
         <script src="/frontend/js/style.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
+        <script src="/frontend/js/popup.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
+        <script src="/frontend/js/order.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
     </body>
 </html>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1&appId=448249385342778&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

@@ -6,12 +6,12 @@
                     <?php if (isset($categoryMenu[0])) { ?>
                         <?php foreach ($categoryMenu[0] as $parent) { ?>
                             <li>
-                                <a href="#"><i class="fa fa-sign-in"></i><?= $parent->title ?><i class="fa fa-caret-right"></i></a>
+                                <a href="<?= route('frontend::category', ['slug'=>$parent->slug])?>"><i class="fa fa-sign-in"></i><?= $parent->title ?><i class="fa fa-caret-right"></i></a>
                                 <div class="menuleft-submenu">
                                     <ul>
                                         <?php if (isset($categoryMenu[$parent->id])) { ?>
                                             <?php foreach ($categoryMenu[$parent->id] as $item) { ?>
-                                                <li><a href="#"><i class="fa fa-long-arrow-right"></i><?= $item->title ?></a></li>
+                                                <li><a href="<?= route('frontend::category', ['slug'=>$item->slug])?>"><i class="fa fa-long-arrow-right"></i><?= $item->title ?></a></li>
                                             <?php } ?>
                                         <?php } ?>
                                     </ul>

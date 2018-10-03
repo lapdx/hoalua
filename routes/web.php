@@ -28,7 +28,13 @@ Route::group(['prefix' => 'system', 'namespace' => 'System', 'middleware' => 'cu
 });
 Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/', ['as' => 'frontend::home', 'uses' => 'HomeController@index']);
+    Route::get('tim-kiem/', ['as' => 'frontend::search', 'uses' => 'HomeController@search']);
     Route::get('/tin-tuc/{slug}', ['as' => 'frontend::news', 'uses' => 'NewsController@detail']);
-//    Route::get('/danh-muc/{slug}', ['as' => 'frontend::news', 'uses' => 'CategoryController@detail']);
-//    Route::get('/{slug}', ['as' => 'frontend::product', 'uses' => 'ProductController@detail']);
+    Route::get('/danh-muc/{slug}', ['as' => 'frontend::category', 'uses' => 'ProductController@listByCategory']);
+    Route::get('/hang-san-xuat/{slug}', ['as' => 'frontend::manufaturer', 'uses' => 'ProductController@listByManufacturer']);
+    Route::post('/order/addtocart', ['as' => 'frontend::addtocart', 'uses' => 'OrderController@addToCart']);
+    Route::post('/order/update-cart', ['as' => 'frontend::update-cart', 'uses' => 'OrderController@updateCart']);
+    Route::post('/order/remove-cart', ['as' => 'frontend::remove-cart', 'uses' => 'OrderController@removeCart']);
+    Route::get('/thanh-toan', ['as' => 'frontend::cart', 'uses' => 'OrderController@cart']);
+    Route::get('/{slug}', ['as' => 'frontend::product', 'uses' => 'ProductController@detail']);
 });

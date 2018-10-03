@@ -864,6 +864,15 @@ a.box-cart .bc-price{
 	top:0;
 	left:0;
 }
+.p-item .p-hot{
+	background:url(../images/hot.png) no-repeat;
+	width:56px;
+	height:30px;
+	position:absolute;
+	z-index:2;
+	top:0;
+	left:0;
+}
 .p-item .p-row{
 	padding:3px 0;
 	text-align:center;
@@ -1276,7 +1285,7 @@ a.box-cart .bc-price{
 .pd-center .pd-qty{
 	display:inline-block;
 	vertical-align:middle;
-	width:45px;
+	width:70px;
 	text-align:center;
 }
 .box-support{
@@ -1477,7 +1486,7 @@ a.box-cart .bc-price{
 	padding:15px 0;
 }
 .checkout-table .form-control{
-	width:50px;
+	width:50%;
 }
 .checkout-table .grid .img{
 	width:100px;

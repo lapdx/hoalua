@@ -1,15 +1,11 @@
+<?php
+$manufacturers = \Illuminate\Support\Facades\DB::table('manufacturer')->where('status','=','active')->get();
+?>
 <div class="footer-slider">
     <div id="fslider" class="owl-carousel">
-        <div class="logo-item"><a href="#"><img src="data/20.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/bosch1.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/chefs.png" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/fagor.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/faster.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/giovani.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/munchen.png" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/napoli.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/siemens.jpg" alt="logo" /></a></div>
-        <div class="logo-item"><a href="#"><img src="data/teka.jpg" alt="logo" /></a></div>
+        <?php foreach ($manufacturers as $manufacturer) { ?>
+        <div class="logo-item"><a href="<?= route("frontend::manufaturer",['slug'=>$manufacturer->slug])?>"><img src="/upload/<?= $manufacturer->image_url?>" alt="logo" /></a></div>
+       <?php } ?>
     </div><!-- owl-carousel -->
 </div><!-- footer-slider -->
 <div class="footer-top">

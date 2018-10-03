@@ -1,22 +1,35 @@
+<?php 
+$clss = "";
+if ($item->status == 'hot') {
+   $clss = 'p-hot';
+}else if($item->status == 'new'){
+    $clss = 'p-new';
+}
+?>
 <div class="p-item">
     <div class="p-thumb">
-        <span class="p-sale">-10%</span>
-        <a href="#"><img src="data/bep-tu-giovani-g-252t.jpg" alt="img" /></a>
+        <span class="<?= $clss?>"></span>
+        <a href="<?= route('frontend::product', ['slug' => $item->slug]) ?>"><img src="/upload/<?= $item->image_url ?>" alt="<?= $item->title ?>" /></a>
     </div>
     <div class="p-row">
-        <a class="p-title" href="#">Bếp Từ Giovani G-252T</a>
+        <a class="p-title" href="<?= route('frontend::product', ['slug' => $item->slug]) ?>"><?= $item->title ?></a>
     </div>
     <div class="p-row">
-        <span class="p-oldprice">9,860,000 đ</span><span class="p-price">8,300,000 đ</span>
+        <?php if ($item->price > $item->sale_price) { ?>
+            <span class="p-oldprice"><?= number_format($item->price, 0, ',', '.') ?> đ</span>
+        <?php } ?>
+        <span class="p-price"><?= number_format($item->sale_price, 0, ',', '.') ?> đ</span>
     </div>
     <div class="p-star">
-        <i class="fa fa-star active"></i>
-        <i class="fa fa-star active"></i>
-        <i class="fa fa-star active"></i>
-        <i class="fa fa-star active"></i>
-        <i class="fa fa-star active"></i>
+        <?php for ($i = 0;$i<5;$i++) {?>
+        <?php if ($i<$item->rating_value) {
+                echo "<i class=\"fa fa-star active\"></i>";
+            }else{
+                 echo "<i class=\"fa fa-star\"></i>";
+            }?>
+        <?php } ?>
     </div>
     <div class="p-row">
-        Bếp Từ Giovani G-252T, Là 2 bếp từ. Điều khiển cảm ứng dạng ẩn dễ dàng sử dụng, luôn thân thiện với người dùng.
+        <?= strip_tags($item->description) ?>
     </div>
-</div><!-- p-item -->
+</div>
