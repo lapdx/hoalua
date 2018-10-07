@@ -27,12 +27,13 @@ function BlogController($scope, $rootScope, $http, $window, $timeout, Upload) {
     $scope.mode = '';
     $scope.formTitle = 'Tạo mới bài viết';
     $scope.filter = {};
-    $scope.statuses = [{name: "Hiện", value: "active"}, {name: "Ẩn", value: "inactive"}];
+    $scope.statuses = [{name: "Hiện", value: "active"}, {name: "Ẩn", value: "inactive"},{name: "Khuyến mãi", value: "sale"}];
     $scope.blog = {
         id: 0,
         title: '',
         slug: '',
         content: '',
+        description: '',
         meta_title: '',
         meta_description: '',
         meta_keywords: '',
@@ -72,6 +73,7 @@ function BlogController($scope, $rootScope, $http, $window, $timeout, Upload) {
             title: '',
             slug: '',
             content: '',
+            description: '',
             meta_title: '',
             meta_description: '',
             meta_keywords: '',

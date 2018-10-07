@@ -13,9 +13,9 @@
                             <thead>
                                 <tr role="row">
                                     <th class="col-md-3 text-center vertical-align">Key</th>
-                                    <th class="col-md-3 text-center vertical-align">Value</th>
+                                    <th class="col-md-4 text-center vertical-align">Value</th>
                                     <th class="col-md-2 text-center vertical-align">Mô tả</th>
-                                    <th class="col-md-2 text-center vertical-align">Chức năng</th>
+                                    <th class="col-md-3 text-center vertical-align">Chức năng</th>
                                 </tr>
                             </thead>
                             <tbody>

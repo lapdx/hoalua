@@ -30,11 +30,17 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/', ['as' => 'frontend::home', 'uses' => 'HomeController@index']);
     Route::get('tim-kiem/', ['as' => 'frontend::search', 'uses' => 'HomeController@search']);
     Route::get('/tin-tuc/{slug}', ['as' => 'frontend::news', 'uses' => 'NewsController@detail']);
+    Route::get('/tin-tuc', ['as' => 'frontend::news::index', 'uses' => 'NewsController@index']);
+    Route::get('/khuyen-mai', ['as' => 'frontend::news::sale', 'uses' => 'NewsController@sale']);
     Route::get('/danh-muc/{slug}', ['as' => 'frontend::category', 'uses' => 'ProductController@listByCategory']);
     Route::get('/hang-san-xuat/{slug}', ['as' => 'frontend::manufaturer', 'uses' => 'ProductController@listByManufacturer']);
     Route::post('/order/addtocart', ['as' => 'frontend::addtocart', 'uses' => 'OrderController@addToCart']);
     Route::post('/order/update-cart', ['as' => 'frontend::update-cart', 'uses' => 'OrderController@updateCart']);
     Route::post('/order/remove-cart', ['as' => 'frontend::remove-cart', 'uses' => 'OrderController@removeCart']);
+    Route::post('/order/create', ['as' => 'frontend::order-create', 'uses' => 'OrderController@saveOrder']);
     Route::get('/thanh-toan', ['as' => 'frontend::cart', 'uses' => 'OrderController@cart']);
+    Route::get('/san-pham', ['as' => 'frontend::category::all', 'uses' => 'CategoryController@index']);
+    Route::get('/lien-he', ['as' => 'frontend::home::contact', 'uses' => 'HomeController@contact']);
+    Route::post('/contact/save', ['as' => 'frontend::contact::save', 'uses' => 'HomeController@saveContact']);
     Route::get('/{slug}', ['as' => 'frontend::product', 'uses' => 'ProductController@detail']);
 });

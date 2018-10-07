@@ -1,6 +1,6 @@
 <div class="navbar navbar-default">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img src="images/logo.png" alt="logo"></a>
+        <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="logo"></a>
         <div class="box-search">
             <form action="<?= URL::route('frontend::search') ?>" method="GET">
                 <div class="bs-inner">
@@ -16,14 +16,14 @@
                 <i class="fa fa-calendar"></i>
                 <div class="hc-text">
                     <p>Giờ bán hàng</p>
-                    <p class="text-danger">8.00 AM - 21:00 PM</p>
+                    <p class="text-danger"><?= $siteConfig['site.salesHours'] ?></p>
                 </div>
             </div>
             <div class="hc-item">
                 <i class="fa fa-phone"></i>
                 <div class="hc-text">
                     <p>Tư vấn Online</p>
-                    <p class="text-danger"><a href="#"><i class="fa fa-skype"></i></a>(84) 977.112.887</p>
+                    <p class="text-danger"><a href="skype:<?= $siteConfig['site.skype'] ?>?chat"><i class="fa fa-skype"></i></a><?= $siteConfig['site.hotline'] ?></p>
                 </div>
             </div>
         </div><!-- header-commit -->
@@ -40,7 +40,7 @@
     </div><!-- navbar-header -->
     <div class="collapse navbar-collapse" id="hoalua-navbar">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Trang chủ</a></li>
+            <li><a href="/">Trang chủ</a></li>
             <li><a href="#">Sản phẩm</a></li>
             <li><a href="#">Khuyến mãi</a></li>
             <li><a href="#">Tin tức</a></li>

@@ -67,6 +67,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">Description<br />
+                        </label>
+                        <div class="col-md-9">
+                            <textarea rows="3" class="form-control" ng-model="blog.description" tabindex="8"></textarea>
+                        </div>
+                    </div>
+                </div>
                
                 <div class="col-md-6">
                     <div class="form-group">

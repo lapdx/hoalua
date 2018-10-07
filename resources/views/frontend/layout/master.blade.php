@@ -17,6 +17,24 @@
         @yield('meta')
     </head>
     <body>
+        <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : '448249385342778',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.1'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
         <div class="container">
             {{ csrf_field() }}
         @include('frontend.layout.header')
@@ -25,7 +43,7 @@
         </div>
         @include('frontend.layout.footer')
         </div>
-        <div class="smart-support">
+<!--        <div class="smart-support">
             <div class="ss-title"><i class="fa fa-comments"></i>Hỗ trợ trực tuyến<i class="ss-status fa fa-plus"></i></div>
             <div class="ss-content">
                 <div class="grid">
@@ -33,21 +51,21 @@
                     <div class="g-content">
                         <div class="g-row"><a class="g-title" href="#">0989.805.886</a></div>
                     </div>
-                </div><!-- grid -->
+                </div> grid 
                 <div class="grid">
                     <div class="img"><i class="fa fa-skype"></i></div>
                     <div class="g-content">
                         <div class="g-row"><a class="g-title" href="#">Skype Chat</a></div>
                     </div>
-                </div><!-- grid -->
+                </div> grid 
                 <div class="grid">
                     <div class="img"><i class="fa fa-envelope"></i></div>
                     <div class="g-content">
                         <div class="g-row"><a class="g-title" href="#">contact@hoalua.com.vn</a></div>
                     </div>
-                </div><!-- grid -->
-            </div><!-- ss-content -->
-        </div>
+                </div> grid 
+            </div> ss-content 
+        </div>-->
         <script type="text/javascript" src="/frontend/js/jquery-1.11.2.min.js?ver=<?= Config::get('app.version'); ?>"></script>
         <script src="/frontend/js/bootstrap.min.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
         <script src="/frontend/js/owl.carousel.min.js?v=<?= Config::get('app.version'); ?>" type="text/javascript"></script>
@@ -62,6 +80,24 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1&appId=448249385342778&autoLogAppEvents=1';
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.1&appId=448249385342778&autoLogAppEvents=1';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js#xfbml=1&version=v2.12&autoLogAppEvents=1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="367827510084685"
+  theme_color="#0084ff"
+  logged_in_greeting="CHUYÊN CUNG CẤP CÁC LOẠI THIẾT BỊ NHÀ BẾP NHẬP KHẨU"
+  logged_out_greeting="CHUYÊN CUNG CẤP CÁC LOẠI THIẾT BỊ NHÀ BẾP NHẬP KHẨU">
+</div>
