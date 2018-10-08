@@ -41,12 +41,11 @@
     <div class="collapse navbar-collapse" id="hoalua-navbar">
         <ul class="nav navbar-nav">
             <li><a href="/">Trang chủ</a></li>
-            <li><a href="#">Sản phẩm</a></li>
-            <li><a href="#">Khuyến mãi</a></li>
-            <li><a href="#">Tin tức</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <?php $menus = json_decode($siteConfig['site.menu']);?>
+            <?php foreach ($menus as $item) { ?>
+            <li><a href="<?=$item->link?>"><?=$item->text?></a></li>
+           <?php  } ?>
         </ul>
-        <div class="header-social"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-google-plus"></i></a></div>
     </div><!-- /.navbar-collapse -->
 </div>
 <div class="box-commit">

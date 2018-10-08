@@ -4,8 +4,6 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
-        <title><?= $title ?></title>
-
         <link rel="stylesheet" type="text/css" href="/frontend/css/bootstrap.min.css?v=<?= Config::get('app.version'); ?>" media="all">
         <link rel="stylesheet" type="text/css" href="/frontend/css/font-awesome.min.css?v=<?= Config::get('app.version'); ?>" media="all">
         <link rel="stylesheet" type="text/css" href="/frontend/css/owl.carousel.css?v=<?= Config::get('app.version'); ?>" media="all">

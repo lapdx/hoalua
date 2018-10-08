@@ -15,6 +15,7 @@ Route::post('/logout', 'Auth\LoginController@logout');
 Route::group(['prefix' => 'system', 'namespace' => 'System', 'middleware' => 'custom'], function () {
     Route::get('/product', ['as' => 'controller::product::index', 'uses' => 'ProductController@index']);
     Route::get('/setting', ['as' => 'controller::setting::index', 'uses' => 'SettingController@index']);
+    Route::get('/menu', ['as' => 'controller::menu::index', 'uses' => 'MenuController@index']);
     Route::get('/attribute', ['as' => 'controller::attributeValue::index', 'uses' => 'AttributeValueController@index']);
     Route::get('/attribute-value', ['as' => 'controller::attribute::index', 'uses' => 'AttributeController@index']);
     Route::get('/manufacturer', ['as' => 'controller::manufacturer::index', 'uses' => 'ManufacturerController@index']);

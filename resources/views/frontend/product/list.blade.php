@@ -1,6 +1,6 @@
 @extends('frontend.layout.master', ['title' => ''])
 @section('meta')
-@include('frontend.layout.meta', ['data' => ''])
+@include('frontend.layout.meta', ['data' => $category])
 @endsection
 @section('content')
 <div class="main">

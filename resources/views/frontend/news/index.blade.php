@@ -25,7 +25,7 @@
                                         <span class="g-time">Ngày đăng: <?= date('d/m/Y', strtotime($item->created_at)) ?></span>
                                     </div>
                                     <div class="g-row">
-                                        <?= $item->desctiption?>
+                                        <?= $item->description?>
                                     </div>
                                     <a class="g-view" href="<?= route("frontend::news",['slug'=>$item->slug])?>">Xem thêm...</a>
                                 </div>
