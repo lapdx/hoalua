@@ -51,12 +51,22 @@
         	<td valign="top" style="padding:10px 10px 10px 25px; background:#fff;">
             	<div style="padding-top:5px;">
                 	<font style="font-size:12px; font-family:Arial, Helvetica, sans-serif;display:block; color:#333;">
-                    	Kính gửi <?= $order->name ?>
+                    	Khách hàng <?= $order->name ?>
                     </font>
                 </div>
-                <div style="padding-top:10px;">
+            	<div style="padding-top:5px;">
                 	<font style="font-size:12px; font-family:Arial, Helvetica, sans-serif;display:block; color:#333;">
-                    	Cảm ơn bạn đã đặt hàng tại <?= route("frontend::home") ?>
+                    	Số điện thoại <?= $order->phone ?>
+                    </font>
+                </div>
+            	<div style="padding-top:5px;">
+                	<font style="font-size:12px; font-family:Arial, Helvetica, sans-serif;display:block; color:#333;">
+                    	Địa chỉ <?= $order->delivery_address ?>
+                    </font>
+                </div>
+            	<div style="padding-top:5px;">
+                	<font style="font-size:12px; font-family:Arial, Helvetica, sans-serif;display:block; color:#333;">
+                    	Ghi chú <?= $order->note ?>
                     </font>
                 </div>
                 <div style="padding-top:10px; font-size:12px; font-family:Arial, Helvetica, sans-serif; color:#333;">
@@ -109,7 +119,7 @@
                             <td valign="top">
                             	<div style="padding-top:10px; padding-right:10px; padding-bottom:10px; padding-left:25px; line-height:20px; font-weight:normal; background:#cb6f00; text-align:center;">
                                 	<font style="font-family:Arial, Helvetica, sans-serif; font-size: 12px; color:#fff;">                                  	
-										Tư vấn online: <span style="color:#fff;">0916 506 579</span> | Giờ bán hàng: <span style="color:#fff;">8.00 AM - 21:00 PM</span>
+										Tư vấn online: <span style="color:#fff;">(84) 977.112.887</span> | Giờ bán hàng: <span style="color:#fff;">8.00 AM - 21:00 PM</span>
                                     </font>
                                 </div>
                             </td>

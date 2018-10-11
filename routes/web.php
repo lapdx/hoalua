@@ -43,5 +43,6 @@ Route::group(['namespace' => 'Frontend'], function(){
     Route::get('/san-pham', ['as' => 'frontend::category::all', 'uses' => 'CategoryController@index']);
     Route::get('/lien-he', ['as' => 'frontend::home::contact', 'uses' => 'HomeController@contact']);
     Route::post('/contact/save', ['as' => 'frontend::contact::save', 'uses' => 'HomeController@saveContact']);
+    Route::get('/order/{id}', ['as' => 'frontend::order::detail', 'uses' => 'OrderController@detail']);
     Route::get('/{slug}', ['as' => 'frontend::product', 'uses' => 'ProductController@detail']);
 });

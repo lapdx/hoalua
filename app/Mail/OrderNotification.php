@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class Order extends Mailable
+class OrderNotification extends Mailable
 {
     use Queueable, SerializesModels;
     protected $order;
@@ -30,6 +30,6 @@ class Order extends Mailable
      */
     public function build()
     {
-        return $this->from('hoaluadesign@gmail.com','HOA LỬA <hoaluadesign@gmail.com>')->subject("[Hoa Lua] Thông báo đặt hàng thành công")->view('frontend.email.create-order',['order'=>$this->order,'products'=> $this->products]);
+        return $this->subject("[Hoa Lua] Thông báo khách đặt hàng")->view('frontend.email.create-order-noti',['order'=>$this->order,'products'=> $this->products]);
     }
 }
