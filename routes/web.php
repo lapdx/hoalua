@@ -16,6 +16,7 @@ Route::group(['prefix' => 'system', 'namespace' => 'System', 'middleware' => 'cu
     Route::get('/product', ['as' => 'controller::product::index', 'uses' => 'ProductController@index']);
     Route::get('/setting', ['as' => 'controller::setting::index', 'uses' => 'SettingController@index']);
     Route::get('/menu', ['as' => 'controller::menu::index', 'uses' => 'MenuController@index']);
+    Route::get('/banner', ['as' => 'controller::banner::index', 'uses' => 'BannerController@index']);
     Route::get('/attribute', ['as' => 'controller::attributeValue::index', 'uses' => 'AttributeValueController@index']);
     Route::get('/attribute-value', ['as' => 'controller::attribute::index', 'uses' => 'AttributeController@index']);
     Route::get('/manufacturer', ['as' => 'controller::manufacturer::index', 'uses' => 'ManufacturerController@index']);

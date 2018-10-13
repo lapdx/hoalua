@@ -55,6 +55,7 @@
           <ul class="treeview-menu" style="display: none;">
             <li><a href="{{route('controller::setting::index')}}"><i class="fa fa-circle-o"></i>Cấu hình</a></li>
             <li><a href="{{route('controller::menu::index')}}"><i class="fa fa-circle-o"></i>Menu</a></li>
+            <li><a href="{{route('controller::banner::index')}}"><i class="fa fa-circle-o"></i>Banner</a></li>
           </ul>
         </li>
       </ul>

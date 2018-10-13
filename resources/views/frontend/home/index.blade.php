@@ -3,15 +3,21 @@
 @include('frontend.layout.meta', ['data' => new StdClass()])
 @endsection
 @section('content')
+<?php $banners = json_decode($siteConfig['slides.banner']); ?>
 <div class="main">
     <div class="main-slider">
         <div id="heartslider" class="owl-carousel">
-            <div class="h-item">
-                <img src="data/slider1.jpg" alt="slider" />
-            </div><!-- h-item -->
-            <div class="h-item">
-                <img src="data/slider2.jpg" alt="slider" />
-            </div><!-- h-item -->
+            <?php
+        foreach ($banners as $item) {
+            if ($item->type == 'home') {
+                ?>
+                <div class="h-item">
+                    <a href="<?= $item->link ?>"><img src="/upload/<?= $item->image_url ?>" alt="banner"></a>
+                 </div>
+            <?php
+            }
+        }
+        ?>
             <div class="h-item">
                 <img src="data/slider3.jpg" alt="slider" />
             </div><!-- h-item -->
@@ -53,12 +59,18 @@
     <?= view("frontend.common.category-menu", ['categoryMenu' => $categoryMenu]) ?>
     <?= view("frontend.common.news-menu", ['news' => $news]) ?>
     <div class="box-banner">
-        <div class="bb-item">
-            <a href="#"><img src="data/banner1.jpg" alt="banner" /></a>
-        </div>
-        <div class="bb-item">
-            <a href="#"><img src="data/banner2.jpg" alt="banner" /></a>
-        </div>
+        <?php
+        foreach ($banners as $item) {
+            if ($item->type == 'mid') {
+                ?>
+                <div class="bb-item">
+                    <a href="<?= $item->link ?>"><img src="/upload/<?= $item->image_url ?>" alt="banner"></a>
+                </div>
+            <?php
+            }
+        }
+        ?>
+
     </div><!-- box-banner -->
 </div><!-- sidebar -->
 <div class="clearfix"></div>

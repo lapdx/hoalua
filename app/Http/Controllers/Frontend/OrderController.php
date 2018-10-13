@@ -82,7 +82,7 @@ class OrderController extends Controller {
             $order = DB::table('inoutput')->where('id', '=', $inoutputId)->first();
             $products = DB::table('inoutput_item')->where('inoutput_id', '=', $inoutputId)->get();
             \Illuminate\Support\Facades\Mail::to($order->email)->send(new \App\Mail\Order($order, $products));
-            \Illuminate\Support\Facades\Mail::to('xuanlap93@gmail.com')->send(new \App\Mail\OrderNotification($order, $products));
+            \Illuminate\Support\Facades\Mail::to('duongtr90@gmail.com')->send(new \App\Mail\OrderNotification($order, $products));
         }
         Cart::destroy();
         return view("frontend.order.success", ["inoutputId" => $inoutputId]);

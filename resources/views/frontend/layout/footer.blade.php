@@ -1,11 +1,11 @@
 <?php
-$manufacturers = \Illuminate\Support\Facades\DB::table('manufacturer')->where('status','=','active')->get();
+$manufacturers = \Illuminate\Support\Facades\DB::table('manufacturer')->where('status', '=', 'active')->get();
 ?>
 <div class="footer-slider">
     <div id="fslider" class="owl-carousel">
         <?php foreach ($manufacturers as $manufacturer) { ?>
-        <div class="logo-item"><a href="<?= route("frontend::manufaturer",['slug'=>$manufacturer->slug])?>"><img src="/upload/<?= $manufacturer->image_url?>" alt="logo" /></a></div>
-       <?php } ?>
+            <div class="logo-item"><a href="<?= route("frontend::manufaturer", ['slug' => $manufacturer->slug]) ?>"><img src="/upload/<?= $manufacturer->image_url ?>" alt="logo" /></a></div>
+        <?php } ?>
     </div><!-- owl-carousel -->
 </div><!-- footer-slider -->
 <div class="footer-top">
@@ -80,7 +80,7 @@ $manufacturers = \Illuminate\Support\Facades\DB::table('manufacturer')->where('s
         <div class="col-sm-12">
             <div class="ft-content" style="text-align: center;">
                 <div class="grid">
-                    <div class="g-row"><?= $siteConfig['site.footer']?></div>
+                    <div class="g-row"><?= $siteConfig['site.footer'] ?></div>
                 </div><!-- grid -->
             </div><!-- ft-content -->
         </div><!-- col -->
@@ -90,3 +90,45 @@ $manufacturers = \Illuminate\Support\Facades\DB::table('manufacturer')->where('s
     <div class="c-left">© 2015 Bản quyền thuộc về Hoa Lửa</div>
     <div class="c-right">Hoa Lửa trên <a href="#">Google Plus</a></div>
 </div><!-- copyright -->
+<?php
+$banners = json_decode($siteConfig['slides.banner']);
+$hasLeft = false;
+$hasRight = false;
+
+foreach ($banners as $item) {
+    if ($item->type == 'left') {
+        $hasLeft = true;
+    }
+    if ($item->type == 'right') {
+        $hasRight = true;
+    }
+}
+?>
+<?php if ($hasLeft) { ?>
+    <div class="banner-left">
+        <div class="banner-fixed">
+            <?php
+            foreach ($banners as $item) {
+                if ($item->type == 'left') {
+                    ?>
+            <a href="<?= $item->link?>"><img src="/upload/<?= $item->image_url?>" alt="banner"></a>
+                <?php }
+            }
+            ?>
+        </div>
+    </div>
+<?php } ?>
+<?php if ($hasRight) { ?>
+    <div class="banner-right">
+        <div class="banner-fixed">
+            <?php
+            foreach ($banners as $item) {
+                if ($item->type == 'right') {
+                    ?>
+                    <a href="<?= $item->link?>"><img src="/upload/<?= $item->image_url?>" alt="banner"></a>
+                <?php }
+            }
+            ?>
+        </div>
+    </div>
+<?php } ?>
