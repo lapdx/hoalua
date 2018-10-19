@@ -41,6 +41,8 @@
     </div>
 
 </div>
+    <script>            var apiUrl = '<?= env("API_URL", "http://api.hoaluaco.vn/api") ?>';
+</script>
 <!-- ./wrapper -->
 @section('js')
 

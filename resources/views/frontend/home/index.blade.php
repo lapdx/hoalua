@@ -18,9 +18,6 @@
             }
         }
         ?>
-            <div class="h-item">
-                <img src="data/slider3.jpg" alt="slider" />
-            </div><!-- h-item -->
         </div><!-- owl-carousel -->
     </div><!-- main-slider -->
     <?php if (isset($saleProducts) && !empty($saleProducts)) { ?>

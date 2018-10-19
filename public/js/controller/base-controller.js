@@ -9,7 +9,7 @@
  * @returns {BaseController}
  */
 function BaseController($scope, $http, $rootScope) {
-    $scope.apiUrl = "http://127.0.0.1/api";
+    $scope.apiUrl = apiUrl;
     var VIETNAMESE_N_ASCII_MAP = {
         "à": "a", "ả": "a", "ã": "a", "á": "a", "ạ": "a", "ă": "a", "ằ": "a", "ẳ": "a", "ẵ": "a",
         "ắ": "a", "ặ": "a", "â": "a", "ầ": "a", "ẩ": "a", "ẫ": "a", "ấ": "a", "ậ": "a", "đ": "d",
