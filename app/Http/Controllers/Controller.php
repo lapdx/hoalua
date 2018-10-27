@@ -16,7 +16,7 @@ class Controller extends BaseController {
 
     protected function getCategories() {
         $retVal = [];
-        $categories = DB::table('category')->where('status', '=', 'active')->get();
+        $categories = DB::table('category')->where('status', '=', 'active')->orderBy('sorder','desc')->get();
         foreach ($categories as $item) {
             if (isset($retVal[$item->parent_id])) {
                 $retVal[$item->parent_id][] = $item;

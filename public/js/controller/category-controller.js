@@ -140,6 +140,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
                         $('.save').button('reset');
                     } else {
                        showMessage('Success', 'Đã cập nhật bộ lọc.', 'success', 'glyphicon-ok');
+                       $scope.find();
                     }
                     $('#filterForm').modal('hide');
                 }, function (e) {
@@ -177,6 +178,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         }
         var description = tinyMCE.get('description').getContent();
         $scope.category.description = description;
+        delete $scope.category.attribute_ids;
         if ($scope.category.image != null && typeof $scope.category.image == 'object') {
             Upload.upload({
                 url: $scope.apiUrl + "/upload",
@@ -196,6 +198,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
                         url += "/" + $scope.category.id;
                         method = 'PATCH';
                     }
+                    
                     $scope.sendRequest(method, url, $scope.category, function (data) {
                         if (data.status == "fail") {
                             showMessage('Error', "Cập nhật thất bại " + data.message, 'error', 'glyphicon-remove');
