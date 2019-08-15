@@ -196,7 +196,7 @@ function AttributeValueController($scope, $rootScope, $http, $window, $timeout, 
             if (data.status == "successful") {
                 $scope.attributeValues = data.result;
                 $scope.filter.page_id = data.meta.page_id;
-                $scope.pagesCount = data.page_count;
+                $scope.pagesCount = data.meta.page_count;
             }
         }).error(function () {
             $scope.hideLoading();

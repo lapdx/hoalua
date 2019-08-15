@@ -279,7 +279,7 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
             if (data.status == "successful") {
                 $scope.products = data.result;
                 $scope.filter.page_id = data.meta.page_id;
-                $scope.pagesCount = data.page_count;
+                $scope.pagesCount = data.meta.page_count;
             }
         }).error(function () {
             $scope.hideLoading();
