@@ -21,10 +21,10 @@ if (!isset($accessFind)) {
         <ul class="pagination pull-right" style="margin: 0px 15px;">
             <li class="@{{step == 0 ? 'active' : ''}}"
                 ng-repeat="step in steps"
-                ng-show="$parent.<?= $accessPageId ?> + step >= 0 && $parent.<?= $accessPageId ?> + step < $parent.<?= $accessPagesCount ?>">
-                <a ng-click="$parent.<?= $accessPageId ?> = $parent.<?= $accessPageId ?> + step;$parent.<?= $accessFind ?>"
+                ng-show="$parent.filter.<?= $accessPageId ?> + step >= 0 && $parent.filter.<?= $accessPageId ?> + step < $parent.<?= $accessPagesCount ?>">
+                <a ng-click="$parent.filter.<?= $accessPageId ?> = $parent.filter.<?= $accessPageId ?> + step;$parent.<?= $accessFind ?>"
                 >
-                    @{{$parent.<?= $accessPageId ?> + step + 1}}
+                    @{{$parent.filter.<?= $accessPageId ?> + step + 1}}
                 </a>
             </li>
         </ul>
