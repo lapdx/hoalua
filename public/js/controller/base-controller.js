@@ -476,6 +476,9 @@ $scope.sendRequest = function(method,url,data,successFn,errorFn){
         let ret = [];
         for (let d in data){
             if (data[d]) {
+                if(d == 'page_size'){
+                    data[d] = 200;
+                }
              ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
             }
         }
