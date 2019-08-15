@@ -202,7 +202,7 @@ function ManufacturerController($scope, $rootScope, $http, $window, $timeout, Up
             $scope.isFinding = false;
             if (data.status == "successful") {
                 $scope.manufactures = data.result;
-                $scope.filter.page_id = data.meta.page_id;
+                $scope.filter.pageId = data.meta.page_id;
                 $scope.pagesCount = data.meta.page_count;
             }
         }).error(function () {

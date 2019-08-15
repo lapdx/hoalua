@@ -182,7 +182,7 @@ function EmailController($scope, $rootScope, $http, $window, $timeout, Upload) {
             $scope.hideLoading();
             if (data.status == "successful") {
                 $scope.emails = data.result;
-                $scope.filter.page_id = data.meta.page_id;
+                $scope.filter.pageId = data.meta.page_id;
                 $scope.pagesCount = data.meta.page_count;
             }
         }).error(function () {
