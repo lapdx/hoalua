@@ -200,5 +200,5 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
     ],
-    'version' => '082019',
+    'version' => '18082019',
 ];
