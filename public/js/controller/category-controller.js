@@ -317,7 +317,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
     };
     function buildFilter(isParent) {
         var retVal = '?embeds=attributeIds&';
-        var dataFilter = {page_id: $scope.filter.pageId, page_size: isParent ? 10000 : 20, sorts: '-sorder'};
+        var dataFilter = {page_id: isParent?0:$scope.filter.pageId, page_size: isParent ? 10000 : 20, sorts: '-sorder'};
         retVal += $scope.baseController.encodeQueryData(dataFilter);
         var filter = '';
         if ($scope.filter.title) {
