@@ -335,7 +335,7 @@ function CategoryController($scope, $rootScope, $http, $window, $timeout, Upload
         if (isParent) {
             filter += 'parent_id=0,';
         }
-        if (filter != '') {
+        if (filter != '' && !isParent) {
             retVal += '&filters=' + filter;
         }
         return retVal;
