@@ -288,7 +288,7 @@ function ProductController($scope, $rootScope, $http, $window, $timeout, Upload)
     };
     function buildFilter() {
         var retVal = '?embeds=attributeIds,images&';
-        var dataFilter = {page_id: $scope.filter.pageId, page_size: 20, sort: '-sorder'};
+        var dataFilter = {page_id: $scope.filter.pageId, page_size: 20, sorts: '-id'};
         retVal += $scope.baseController.encodeQueryData(dataFilter);
         var filter = '';
         if ($scope.filter.title) {
