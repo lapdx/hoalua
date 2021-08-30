@@ -47,8 +47,14 @@
                             <?php } ?>
                             <div class="pd-row">
                                 <label>Giá khuyến mại:</label>
-                                <div class="pd-text"><span class="pd-price"><?= number_format($product->sale_price, 0, ',', '.') ?> VNĐ</span></div>
+                                <div class="pd-text"><span class="discount-percent pd-price"><?= number_format($product->sale_price, 0, ',', '.') ?> VNĐ</span></div>
                             </div><!-- pd-row -->
+                            <?php if (isset($discount)) { ?>
+                                <div class="pd-row">
+                                <label>Tiết kiệm:</label>
+                                <div class="pd-text"> <span class="discount-percent"><?= $discount ?>% </span><span class="pd-price">(<?= number_format(($product->price - $product->sale_price), 0, ',', '.') ?> VNĐ)</span></div>
+                            </div>
+                                <?php } ?>
                             <div class="pd-row">
                                 <label>Số lượng:</label>
                                 <div class="pd-text">

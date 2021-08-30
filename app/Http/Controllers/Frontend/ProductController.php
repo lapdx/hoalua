@@ -27,6 +27,10 @@ class ProductController extends Controller {
         $retVal['news'] = $news;
         $images = DB::table('product_gallery')->where('product_id','=',$product->id)->get();
         $retVal['images'] = $images;
+        if ($product->price > $product->sale_price) { 
+                $discount = 100 - (($product->sale_price/$product->price)*100);
+                $retVal['discount'] = $discount;
+            }
         return view('frontend.product.detail', $retVal);
     }
     

@@ -1883,6 +1883,22 @@ a.box-cart .bc-price{
 .smart-support .ss-content .grid .g-title:hover{
 	color:#0583cc;
 }
+.p-discount{
+	position: relative;
+    background: #d90010;
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px 7px;
+    font-size: 12px;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    z-index: 20;
+}
+.discount-percent{
+	color: red!important;
+    font-weight: bold;
+}
 @media (max-width: 767px){
 	.p-item .p-thumb a img {
 		max-width: 105px;

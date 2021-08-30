@@ -9,6 +9,12 @@ if ($item->status == 'hot') {
 <div class="p-item">
     <div class="p-thumb">
         <span class="<?= $clss?>"></span>
+        <?php 
+        if ($item->price > $item->sale_price) { 
+                $discount = (($item->sale_price/$item->price)*100)-100;
+            ?>
+        <span class="p-discount"><?= round($discount) ?>%</span>
+        <?php } ?>
         <a href="<?= route('frontend::product', ['slug' => $item->slug]) ?>"><img src="/upload/<?= $item->image_url ?>" alt="<?= $item->title ?>" /></a>
     </div>
     <div class="p-row">
